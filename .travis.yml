@@ -62,16 +62,6 @@ env:
     # override default yarn
     - PATH=$HOME/.yarn/bin:$PATH
 
-before_install:
-  - curl -O https://storage.googleapis.com/golang/go1.13.6.linux-ppc64le.tar.gz
-  - tar zxf go1.13.6.linux-ppc64le.tar.gz
-  - chmod +x go/bin/*
-  - sudo chown -R root:root ./go
-  - sudo mv go /usr/local
-  - mkdir -p $HOME/go/bin
-  - export GOPATH=$HOME/go
-  - export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-
 install:
   - docker rmi $(docker images -q) || true
   - travis_retry make install-ci
