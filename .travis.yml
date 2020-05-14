@@ -1,5 +1,5 @@
 sudo: required
-
+arch: ppc64le
 language: go
 go_import_path: github.com/jaegertracing/jaeger
 
