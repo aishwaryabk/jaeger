@@ -61,8 +61,8 @@ env:
     - PATH=$HOME/.yarn/bin:$PATH
 
 before_install:
-  - curl -O https://storage.googleapis.com/golang/${GO_VER}.linux-ppc64le.tar.gz
-  - tar zxf ${GO_VER}.linux-ppc64le.tar.gz
+  - curl -O https://storage.googleapis.com/golang/go1.13.6.linux-ppc64le.tar.gz
+  - tar zxf go1.13.6.linux-ppc64le.tar.gz
   - chmod +x go/bin/*
   - sudo chown -R root:root ./go
   - sudo mv go /usr/local
