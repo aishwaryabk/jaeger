@@ -5,7 +5,9 @@ go_import_path: github.com/jaegertracing/jaeger
 
 dist: trusty
 addon:
-  apt: make
+  apt:
+      - make
+      - time
   
 matrix:
   include:
