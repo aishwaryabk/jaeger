@@ -4,7 +4,9 @@ language: go
 go_import_path: github.com/jaegertracing/jaeger
 
 dist: trusty
-
+addon:
+  apt: maven
+  
 matrix:
   include:
   - go: "1.14.x"
@@ -44,7 +46,6 @@ services:
   - docker
 
 before_install:
-  - sudo apt install -y make
   - curl -O https://storage.googleapis.com/golang/go1.13.6.linux-ppc64le.tar.gz
   - tar zxf go1.13.6.linux-ppc64le.tar.gz
   - chmod +x go/bin/*
