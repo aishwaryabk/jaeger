@@ -9,6 +9,7 @@ addons:
   apt:
     packages:
     - cmake
+    - gnupg
     - jq
     - time
     - docker-compose
