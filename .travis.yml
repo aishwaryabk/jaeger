@@ -34,6 +34,7 @@ matrix:
       - CROSSDOCK_OTEL=true
   - go: "1.14.x"
     env:
+    - GOOS=linux
     - DOCKER=true
     - DEPLOY=true
   - go: "1.14.x"
