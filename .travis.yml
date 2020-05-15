@@ -10,6 +10,7 @@ addons:
     packages:
     - cmake
     - time
+    - docker-compose
     - jq
   
 matrix:
