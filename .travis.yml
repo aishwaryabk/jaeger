@@ -10,6 +10,7 @@ addons:
     packages:
     - cmake
     - time
+    - protobuf-compiler
     - docker-compose
     - jq
   
