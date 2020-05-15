@@ -53,6 +53,13 @@ matrix:
 services:
   - docker
 
+before_install:
+  - wget https://dl.google.com/go/go1.13.6.linux-ppc64le.tar.gz -P /tmp
+  - tar -xf /tmp/go1.13.6.linux-ppc64le.tar.gz -C /usr/local/
+  - export GOPATH=$HOME/go
+  - export GO111MODULE=on
+  - export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
+
 env:
   global:
     - DOCKER_COMPOSE_VERSION=1.8.0
