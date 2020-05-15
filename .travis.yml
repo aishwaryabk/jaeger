@@ -54,11 +54,14 @@ services:
   - docker
 
 before_install:
-  - sudo wget https://dl.google.com/go/go1.13.6.linux-ppc64le.tar.gz -P /tmp
-  - sudo tar -xf /tmp/go1.13.6.linux-ppc64le.tar.gz -C /usr/local/
+  - curl -O https://storage.googleapis.com/golang/go1.14.linux-ppc64le.tar.gz
+  - tar zxf go1.14.linux-ppc64le.tar.gz
+  - chmod +x go/bin/*
+  - sudo chown -R root:root ./go
+  - sudo mv go /usr/local
+  - mkdir -p $HOME/go/bin
   - export GOPATH=$HOME/go
-  - export GO111MODULE=on
-  - export PATH=/usr/local/go/bin:$GOPATH/bin:$PATH
+  - export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 
 env:
   global:
