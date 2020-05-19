@@ -13,8 +13,7 @@ addons:
     - time
     - docker-compose
     - jq
-    - yarn
-  
+
 matrix:
   include:
   - go: "1.14.x"
