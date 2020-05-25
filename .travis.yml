@@ -39,13 +39,13 @@ matrix:
     - DEPLOY=true
   - go: "1.14.x"
     env:
-    - ES_INTEGRATION_TEST=true
+    - ES_INTEGRATION_TEST=false
   - go: "1.14.x"
     env:
-    - KAFKA_INTEGRATION_TEST=true
+    - KAFKA_INTEGRATION_TEST=false
   - go: "1.14.x"
     env:
-    - CASSANDRA_INTEGRATION_TEST=true
+    - CASSANDRA_INTEGRATION_TEST=false
   - go: "1.14.x"
     env:
     - HOTROD=true
