@@ -31,7 +31,7 @@ matrix:
     - CROSSDOCK=false
   - go: "1.14.x"
     env:
-      - CROSSDOCK_OTEL=true
+      - CROSSDOCK_OTEL=false
   - go: "1.14.x"
     env:
     - GOOS=linux
