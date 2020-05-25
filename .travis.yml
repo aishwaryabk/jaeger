@@ -45,7 +45,7 @@ matrix:
     - KAFKA_INTEGRATION_TEST=false
   - go: "1.14.x"
     env:
-    - CASSANDRA_INTEGRATION_TEST=false
+    - CASSANDRA_INTEGRATION_TEST=true
   - go: "1.14.x"
     env:
     - HOTROD=true
