@@ -22,20 +22,20 @@ matrix:
     - COVERAGE=true
   - go: "1.14.x"
     env:
-    - PROTO_GEN_TEST=true
+    - PROTO_GEN_TEST=false
   - go: "1.14.x"
     env:
     - ALL_IN_ONE=true
   - go: "1.14.x"
     env:
-    - CROSSDOCK=true
+    - CROSSDOCK=false
   - go: "1.14.x"
     env:
       - CROSSDOCK_OTEL=true
   - go: "1.14.x"
     env:
     - GOOS=linux
-    - DOCKER=false
+    - DOCKER=true
     - DEPLOY=true
   - go: "1.14.x"
     env:
