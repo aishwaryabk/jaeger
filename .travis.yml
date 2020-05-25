@@ -35,7 +35,7 @@ matrix:
   - go: "1.14.x"
     env:
     - GOOS=linux
-    - DOCKER=true
+    - DOCKER=false
     - DEPLOY=true
   - go: "1.14.x"
     env:
