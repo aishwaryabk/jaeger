@@ -22,16 +22,16 @@ matrix:
     - COVERAGE=true
   - go: "1.14.x"
     env:
-    - PROTO_GEN_TEST=false
+    - PROTO_GEN_TEST=true
   - go: "1.14.x"
     env:
     - ALL_IN_ONE=true
   - go: "1.14.x"
     env:
-    - CROSSDOCK=false
+    - CROSSDOCK=true
   - go: "1.14.x"
     env:
-      - CROSSDOCK_OTEL=false
+      - CROSSDOCK_OTEL=true
   - go: "1.14.x"
     env:
     - GOOS=linux
@@ -39,10 +39,10 @@ matrix:
     - DEPLOY=true
   - go: "1.14.x"
     env:
-    - ES_INTEGRATION_TEST=false
+    - ES_INTEGRATION_TEST=true
   - go: "1.14.x"
     env:
-    - KAFKA_INTEGRATION_TEST=false
+    - KAFKA_INTEGRATION_TEST=true
   - go: "1.14.x"
     env:
     - CASSANDRA_INTEGRATION_TEST=true
