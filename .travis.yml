@@ -105,6 +105,9 @@ install:
             find / -name protoc;
             mkdir -p "$HOME"/protoc/bin;
             cp /usr/share/bash-completion/completions/protoc "$HOME"/protoc/bin/ ;
+            cd protobuf ;
+            docker build -t jaegertracing/protobuf:0.1.0 -f Dockerfile . ;
+            cd .. ;
         else
             curl -L https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-linux-x86_64.zip -o /tmp/protoc.zip;
             unzip /tmp/protoc.zip -d "$HOME"/protoc      
