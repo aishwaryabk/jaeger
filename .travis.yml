@@ -4,6 +4,11 @@ arch: ppc64le
 language: go
 go_import_path: github.com/jaegertracing/jaeger
 
+addons:
+  apt:
+    packages:
+    - docker
+    
 dist: trusty
 
 matrix:
