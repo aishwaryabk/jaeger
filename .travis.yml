@@ -96,7 +96,20 @@ install:
   - if [ "$ALL_IN_ONE" == true ]; then bash ./scripts/travis/install-ui-deps.sh ; fi
   - if [ "$DOCKER" == true ]; then bash ./scripts/travis/install-ui-deps.sh ; fi
   - if [ "$CROSSDOCK" == true ]; then bash ./scripts/travis/install-crossdock-deps.sh ; fi
- 
+  - |
+    if [ "$PROTO_GEN_TEST" == true ]; then
+        make proto-install
+        if [[ $(uname -m) == 'ppc64le' ]]; then
+            wget https://github.com/ppc64le/build-scripts/blob/master/protobuf/protobuf_ubuntu_16.04.sh ;
+            bash build_protobuf.sh -y;
+            find / -name protoc;
+            mkdir -p "$HOME"/protoc/bin;
+            cp /usr/local/bin/protoc "$HOME"/protoc/bin/ ;
+        else
+            curl -L https://github.com/google/protobuf/releases/download/v3.6.1/protoc-3.6.1-linux-x86_64.zip -o /tmp/protoc.zip;
+            unzip /tmp/protoc.zip -d "$HOME"/protoc      
+        fi
+    fi
 
 script:
   - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo $TRAVIS_BRANCH; else echo $TRAVIS_PULL_REQUEST_BRANCH; fi)
