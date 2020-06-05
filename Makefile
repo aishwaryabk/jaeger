@@ -25,7 +25,7 @@ ALL_PKGS := $(shell echo $(dir $(ALL_SRC)) | tr ' ' '\n' | sort -u)
 
 UNAME := $(shell uname -m)
 #Race flag is not supported on s390x architecture
-ifeq ($(UNAME), s390x)
+ifeq ($(UNAME), ppc64le)
 	RACE=
 else
 	RACE=-race
@@ -273,9 +273,9 @@ build-binaries-windows:
 build-binaries-darwin:
 	GOOS=darwin GOARCH=amd64 $(MAKE) build-platform-binaries
 
-.PHONY: build-binaries-s390x
-build-binaries-s390x:
-	GOOS=linux GOARCH=s390x $(MAKE) build-platform-binaries
+.PHONY: build-binaries-ppc64le
+build-binaries-ppc64le:
+	GOOS=linux GOARCH=ppc64le $(MAKE) build-platform-binaries
 
 .PHONY: build-binaries-arm64
 build-binaries-arm64:
