@@ -311,7 +311,7 @@ build-binaries-s390x:
 build-platform-binaries: build-agent build-collector build-query build-ingester build-all-in-one build-examples build-tracegen build-otel-collector build-otel-agent build-otel-ingester
 
 .PHONY: build-all-platforms
-build-all-platforms: build-binaries-linux build-binaries-windows build-binaries-darwin build-binaries-ppc64le
+build-all-platforms: build-binaries-linux build-binaries-windows build-binaries-darwin build-binaries-s390x
 
 .PHONY: docker-images-cassandra
 docker-images-cassandra:
