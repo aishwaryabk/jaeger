@@ -112,6 +112,7 @@ install:
             cp /usr/share/bash-completion/completions/protoc "$HOME"/protoc/bin/ ;
             cd protobuf/ ;
             export PATH=$PATH:$PWD;
+            chmod +x protoc-wrapper ;
             docker build -t jaegertracing/protobuf:0.1.0 -f Dockerfile . ;
             export PATH=$PATH:$PWD;
             cd .. ;
