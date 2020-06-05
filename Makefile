@@ -285,7 +285,7 @@ build-binaries-arm64:
 build-platform-binaries: build-agent build-collector build-query build-ingester build-all-in-one build-examples build-tracegen build-otel-collector build-otel-agent build-otel-ingester build-otel-all-in-one
 
 .PHONY: build-all-platforms
-build-all-platforms: build-binaries-linux build-binaries-windows build-binaries-darwin build-binaries-s390x build-binaries-arm64
+build-all-platforms: build-binaries-linux build-binaries-windows build-binaries-darwin build-binaries-ppc64le build-binaries-arm64
 
 .PHONY: docker-images-cassandra
 docker-images-cassandra:
