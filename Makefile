@@ -25,7 +25,7 @@ ALL_PKGS := $(shell echo $(dir $(ALL_SRC)) | tr ' ' '\n' | sort -u)
 
 UNAME := $(shell uname -m)
 #Race flag is not supported on s390x architecture
-ifeq ($(UNAME), ppc64le)
+ifeq ($(UNAME), s390x)
 	RACE=
 else
 	RACE=-race
@@ -195,7 +195,7 @@ elasticsearch-mappings:
 .PHONY: build-examples
 build-examples:
 	esc -pkg frontend -o examples/hotrod/services/frontend/gen_assets.go  -prefix examples/hotrod/services/frontend/web_assets examples/hotrod/services/frontend/web_assets
-ifeq ($(GOARCH), ppc64le)
+ifeq ($(GOARCH), s390x)
 	$(GOBUILD) -o ./examples/hotrod/hotrod-$(GOOS)-$(GOARCH) ./examples/hotrod/main.go
 else
 	$(GOBUILD) -o ./examples/hotrod/hotrod-$(GOOS) ./examples/hotrod/main.go
@@ -226,7 +226,7 @@ build-all-in-one-linux: build-ui
 
 .PHONY: build-all-in-one
 build-all-in-one: elasticsearch-mappings
-ifeq ($(GOARCH), ppc64le)
+ifeq ($(GOARCH), s390x)
 	$(GOBUILD) -tags ui -o ./cmd/all-in-one/all-in-one-$(GOOS)-$(GOARCH) $(BUILD_INFO) ./cmd/all-in-one/main.go
 else
 	$(GOBUILD) -tags ui -o ./cmd/all-in-one/all-in-one-$(GOOS) $(BUILD_INFO) ./cmd/all-in-one/main.go
@@ -234,7 +234,7 @@ endif
 
 .PHONY: build-agent
 build-agent:
-ifeq ($(GOARCH), ppc64le)
+ifeq ($(GOARCH), s390x)
 	$(GOBUILD) -o ./cmd/agent/agent-$(GOOS)-$(GOARCH) $(BUILD_INFO) ./cmd/agent/main.go
 else
 	$(GOBUILD) -o ./cmd/agent/agent-$(GOOS) $(BUILD_INFO) ./cmd/agent/main.go
@@ -242,7 +242,7 @@ endif
 
 .PHONY: build-query
 build-query:
-ifeq ($(GOARCH), ppc64le)
+ifeq ($(GOARCH), s390x)
 	$(GOBUILD) -tags ui -o ./cmd/query/query-$(GOOS)-$(GOARCH) $(BUILD_INFO) ./cmd/query/main.go
 else
 	$(GOBUILD) -tags ui -o ./cmd/query/query-$(GOOS) $(BUILD_INFO) ./cmd/query/main.go
@@ -250,7 +250,7 @@ endif
 
 .PHONY: build-collector
 build-collector: elasticsearch-mappings
-ifeq ($(GOARCH), ppc64le)
+ifeq ($(GOARCH), s390x)
 	$(GOBUILD) -o ./cmd/collector/collector-$(GOOS)-$(GOARCH) $(BUILD_INFO) ./cmd/collector/main.go
 else
 	$(GOBUILD) -o ./cmd/collector/collector-$(GOOS) $(BUILD_INFO) ./cmd/collector/main.go
@@ -258,7 +258,7 @@ endif
 
 .PHONY: build-otel-collector
 build-otel-collector: elasticsearch-mappings
-ifeq ($(GOARCH), ppc64le)
+ifeq ($(GOARCH), s390x)
 	cd ${OTEL_COLLECTOR_DIR}/cmd/collector && $(GOBUILD) -o ./opentelemetry-collector-$(GOOS)-$(GOARCH) $(BUILD_INFO) main.go
 else
 	cd ${OTEL_COLLECTOR_DIR}/cmd/collector && $(GOBUILD) -o ./opentelemetry-collector-$(GOOS) $(BUILD_INFO) main.go
@@ -266,7 +266,7 @@ endif
 
 .PHONY: build-otel-agent
 build-otel-agent:
-ifeq ($(GOARCH), ppc64le)
+ifeq ($(GOARCH), s390x)
 	cd ${OTEL_COLLECTOR_DIR}/cmd/agent && $(GOBUILD) -o ./opentelemetry-agent-$(GOOS)-$(GOARCH) $(BUILD_INFO) main.go
 else
 	cd ${OTEL_COLLECTOR_DIR}/cmd/agent && $(GOBUILD) -o ./opentelemetry-agent-$(GOOS) $(BUILD_INFO) main.go
@@ -274,7 +274,7 @@ endif
 
 .PHONY: build-otel-ingester
 build-otel-ingester:
-ifeq ($(GOARCH), ppc64le)
+ifeq ($(GOARCH), s390x)
 	cd ${OTEL_COLLECTOR_DIR}/cmd/ingester && $(GOBUILD) -o ./opentelemetry-ingester-$(GOOS)-$(GOARCH) $(BUILD_INFO) main.go
 else
 	cd ${OTEL_COLLECTOR_DIR}/cmd/ingester && $(GOBUILD) -o ./opentelemetry-ingester-$(GOOS) $(BUILD_INFO) main.go
@@ -282,7 +282,7 @@ endif
 
 .PHONY: build-ingester
 build-ingester:
-ifeq ($(GOARCH), ppc64le)
+ifeq ($(GOARCH), s390x)
 	$(GOBUILD) -o ./cmd/ingester/ingester-$(GOOS)-$(GOARCH) $(BUILD_INFO) ./cmd/ingester/main.go
 else
 	$(GOBUILD) -o ./cmd/ingester/ingester-$(GOOS) $(BUILD_INFO) ./cmd/ingester/main.go
@@ -303,9 +303,9 @@ build-binaries-windows:
 build-binaries-darwin:
 	GOOS=darwin $(MAKE) build-platform-binaries
 
-.PHONY: build-binaries-ppc64le
-build-binaries-ppc64le:
-	GOOS=linux GOARCH=ppc64le $(MAKE) build-platform-binaries
+.PHONY: build-binaries-s390x
+build-binaries-s390x:
+	GOOS=linux GOARCH=s390x $(MAKE) build-platform-binaries
 
 .PHONY: build-platform-binaries
 build-platform-binaries: build-agent build-collector build-query build-ingester build-all-in-one build-examples build-tracegen build-otel-collector build-otel-agent build-otel-ingester
