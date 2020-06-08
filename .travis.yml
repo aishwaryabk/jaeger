@@ -113,8 +113,10 @@ install:
         make proto-install
         if [[ $(uname -m) == 'ppc64le' ]]; then
             apt-get install -y git autoconf libtool automake g++ make curl unzip; 
-            git clone https://github.com/google/protobuf -b v3.4.1 --depth 1;
-            cd protobuf;
+            mkdir proto_buf;
+            git clone https://github.com/google/protobuf -b v3.4.1 --depth 1 proto_buf/;
+            cd proto_buf/protobuf;
+            pwd;
             ./autogen.sh;
             ./configure --prefix=/usr;
             sudo make && sudo make check;
