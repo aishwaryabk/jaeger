@@ -24,8 +24,8 @@ ALL_SRC := $(shell find . -name '*.go' \
 ALL_PKGS := $(shell echo $(dir $(ALL_SRC)) | tr ' ' '\n' | sort -u)
 
 UNAME := $(shell uname -m)
-#Race flag is not supported on s390x architecture
-ifeq ($(UNAME), ppc64le)
+#Race flag is not supported on s390x/ppc64le architecture
+ifeq ($(UNAME),$(filter $(UNAME), s390x ppc64le))
 	RACE=
 else
 	RACE=-race
@@ -273,6 +273,10 @@ build-binaries-windows:
 build-binaries-darwin:
 	GOOS=darwin GOARCH=amd64 $(MAKE) build-platform-binaries
 
+.PHONY: build-binaries-s390x
+build-binaries-s390x:
+	GOOS=linux GOARCH=s390x $(MAKE) build-platform-binaries
+	
 .PHONY: build-binaries-ppc64le
 build-binaries-ppc64le:
 	GOOS=linux GOARCH=ppc64le $(MAKE) build-platform-binaries
@@ -285,7 +289,7 @@ build-binaries-arm64:
 build-platform-binaries: build-agent build-collector build-query build-ingester build-all-in-one build-examples build-tracegen build-otel-collector build-otel-agent build-otel-ingester build-otel-all-in-one
 
 .PHONY: build-all-platforms
-build-all-platforms: build-binaries-linux build-binaries-windows build-binaries-darwin build-binaries-ppc64le build-binaries-arm64
+build-all-platforms: build-binaries-linux build-binaries-windows build-binaries-darwin build-binaries-s390x build-binaries-ppc64le build-binaries-arm64
 
 .PHONY: docker-images-cassandra
 docker-images-cassandra:
