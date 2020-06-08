@@ -114,9 +114,7 @@ install:
         if [[ $(uname -m) == 'ppc64le' ]]; then
             apt-get install -y git autoconf libtool automake g++ make curl unzip; 
             git clone https://github.com/google/protobuf -b v3.4.1 --depth 1;
-            mkdir protobuf2;
-            mv protobuf protobuf2;
-            cd protobuf2;
+            cd protobuf;
             pwd;
             ./autogen.sh;
             ./configure --prefix=/usr;
@@ -125,7 +123,7 @@ install:
             cd ..;
             mkdir -p "$HOME"/protoc/bin;
             cp /usr/share/bash-completion/completions/protoc "$HOME"/protoc/bin/ ;
-            cd protobuf/ ;
+            cd protobuf23/ ;
             export PATH=$PATH:$PWD;
             chmod +x protoc-wrapper ;
             docker build -t jaegertracing/protobuf:0.1.0 -f Dockerfile . ;
