@@ -7,6 +7,7 @@ go_import_path: github.com/jaegertracing/jaeger
 addons:
   apt:
     packages:
+    - libprotoc-dev
     - docker
     
 dist: trusty
