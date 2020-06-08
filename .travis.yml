@@ -39,6 +39,8 @@ matrix:
         apt:
           packages:
           - libprotoc-dev
+          - libprotobuf-dev
+          - protobuf-compiler
     - arch: amd64
       go: 1.13.x
       env:
