@@ -35,6 +35,10 @@ matrix:
       go: 1.13.x
       env:
       - PROTO_GEN_TEST=true
+      addons:
+        apt:
+          packages:
+          - libprotoc-dev
     - arch: amd64
       go: 1.13.x
       env:
