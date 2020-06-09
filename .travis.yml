@@ -133,6 +133,7 @@ install:
             cd protobuf23/ ;
             export PATH=$PATH:$PWD;
             chmod +x protoc-wrapper ;
+            protoc --version;
             docker build -t jaegertracing/protobuf:0.1.0 -f Dockerfile . ;
             export PATH=$PATH:$PWD;
             cd .. ;
