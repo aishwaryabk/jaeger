@@ -123,6 +123,8 @@ install:
             cd temp2;
             wget https://github.com/protocolbuffers/protobuf/releases/download/v3.7.0/protoc-3.7.0-linux-ppcle_64.zip;
             unzip protoc-3.7.0-linux-ppcle_64.zip;
+            ls;
+            find / -name proto;
             export PATH=$PATH:$PWD:bin/protoc;
             cd ..;
             mkdir -p "$HOME"/protoc/bin;
