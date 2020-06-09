@@ -123,7 +123,7 @@ install:
             ./configure --prefix=/usr;
             sudo make && sudo make check;
             sudo make install;
-            cd ../..;
+            cd ../.. ;
             mkdir -p "$HOME"/protoc/bin;
             cp /usr/share/bash-completion/completions/protoc "$HOME"/protoc/bin/ ;
             cd protobuf23/ ;
