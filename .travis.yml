@@ -126,7 +126,6 @@ install:
             export PATH=$PATH:$PWD;
             chmod +x protoc-wrapper ;
             docker build -t jaegertracing/protobuf:0.1.0 -f Dockerfile . ;
-            export PATH=$PATH:$PWD;
             cd .. ;
             protoc --version
             pwd;
