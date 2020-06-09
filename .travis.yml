@@ -116,6 +116,7 @@ install:
             git clone https://github.com/google/protobuf -b v3.4.1 --depth 1;
             cd protobuf;
             pwd;
+            find / -name ./autogen.sh;
             ./autogen.sh;
             ./configure --prefix=/usr;
             sudo make && sudo make check;
