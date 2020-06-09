@@ -40,6 +40,15 @@ matrix:
           - libprotoc-dev
           - libprotobuf-dev
           - protobuf-compiler
+	  - git 
+	  - autoconf
+	  - libtool
+	  - automake
+	  - g++
+	  - make
+	  - wget
+	  - curl
+	  - unzip
     - arch: amd64
       go: 1.13.x
       env:
@@ -112,7 +121,6 @@ install:
         make proto-install
         if [[ $(uname -m) == 'ppc64le' ]]; then
             mkdir temp2 ;
-	    apt-get install -y git autoconf libtool automake g++ make wget curl unzip; 
             cd temp2;
             wget https://github.com/protocolbuffers/protobuf/releases/download/v3.7.0/protoc-3.7.0-linux-ppcle_64.zip;
             unzip protoc-3.7.0-linux-ppcle_64.zip;
