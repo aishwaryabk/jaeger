@@ -118,9 +118,10 @@ install:
             wget https://github.com/protocolbuffers/protobuf/releases/download/v3.7.0/protoc-3.7.0-linux-ppcle_64.zip;
             unzip protoc-3.7.0-linux-ppcle_64.zip;
             export PATH=$PATH:$PWD:bin/protoc;
-            cd ../.. ;
+            cd .. ;
             mkdir -p "$HOME"/protoc/bin;
             cp /usr/share/bash-completion/completions/protoc "$HOME"/protoc/bin/ ;
+            find / -name protobuf23;
             cd protobuf23/ ;
             export PATH=$PATH:$PWD;
             chmod +x protoc-wrapper ;
