@@ -24,6 +24,7 @@ matrix:
           - jq
           - time
           - docker-compose
+	  
     - arch: amd64
       go: 1.13.x
       env:
@@ -40,6 +41,7 @@ matrix:
           - libprotoc-dev
           - libprotobuf-dev
           - protobuf-compiler
+	  
     - arch: amd64
       go: 1.13.x
       env:
@@ -48,37 +50,44 @@ matrix:
     - arch: ppc64le
       go: 1.13.x
       env:
-      - ALL_IN_ONE=true  
+      - ALL_IN_ONE=true
 
     - arch: ppc64le
       go: 1.13.x
       env:
-      - ALL_IN_ONE=true  
+      - ALL_IN_ONE=true
+      
     - arch: amd64
       go: 1.13.x
       env:
-      - CROSSDOCK=true 
+      - CROSSDOCK=true
+      
     - arch: amd64
       go: 1.13.x
       env:
       - DOCKER=true
       - DEPLOY=true
+      
     - arch: amd64
       go: 1.13.x
       env:
       - ES_INTEGRATION_TEST=true
+      
     - arch: amd64
       go: 1.13.x
       env:
       - KAFKA_INTEGRATION_TEST=true
+      
     - arch: amd64
       go: 1.13.x
       env:
       - CASSANDRA_INTEGRATION_TEST=true
+      
     - arch: ppc64le
       go: 1.13.x
       env:
       - HOTROD=true
+      
     - arch: amd64
       go: 1.13.x
       env:
@@ -87,7 +96,6 @@ matrix:
 
 services:
   - docker
-
 
 env:
   global:
@@ -111,7 +119,7 @@ install:
     if [ "$PROTO_GEN_TEST" == true ]; then
         make proto-install
         if [[ $(uname -m) == 'ppc64le' ]]; then
-			      apt-get install -y git autoconf libtool automake g++ make wget curl unzip; 
+            apt-get install -y git autoconf libtool automake g++ make wget curl unzip; 
             mkdir temp2;
             cd temp2;
             wget https://github.com/protocolbuffers/protobuf/releases/download/v3.7.0/protoc-3.7.0-linux-ppcle_64.zip;
