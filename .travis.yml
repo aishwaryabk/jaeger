@@ -111,7 +111,7 @@ install:
     if [ "$PROTO_GEN_TEST" == true ]; then
         make proto-install
         if [[ $(uname -m) == 'ppc64le' ]]; then
-			apt-get install -y git autoconf libtool automake g++ make wget curl unzip; 
+	    apt-get install -y git autoconf libtool automake g++ make wget curl unzip; 
             mkdir temp2;
             cd temp2;
             wget https://github.com/protocolbuffers/protobuf/releases/download/v3.7.0/protoc-3.7.0-linux-ppcle_64.zip;
