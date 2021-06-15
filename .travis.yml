@@ -18,6 +18,7 @@ matrix:
           - jq
           - time
           - docker-compose
+          
   - go: "1.14.x"
     env:
     - PROTO_GEN_TEST=true
